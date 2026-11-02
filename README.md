@@ -2,10 +2,10 @@
 
 This repository contains  mappers that convert various event sources into OCSF v1.5.0 types
 
-They work out of the box with with [Tangent](https://github.com/telophasehq/tangent):
+They work out of the box with with [Tangent](https://github.com/EthanBlackburn/tangent):
 
 ```sh
-git clone https://github.com/telophasehq/tangent-plugins
+git clone https://github.com/EthanBlackburn/tangent-plugins
 ```
 
 Add them to your tangent config
