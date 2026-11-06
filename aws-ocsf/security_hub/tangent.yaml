@@ -10,21 +10,12 @@ plugins:
 sources:
   socket_main:
     type: socket
-    path: "/tmp/sidecar.sock"
+    socket_path: "/tmp/sidecar.sock"
 sinks:
   blackhole:
     type: blackhole
 dag:
-  - from:
-      kind: source
-      name: socket_main
-    to:
-      - kind: plugin
-        name: security_hub
-
-  - from:
-      kind: plugin
-      name: security_hub
-    to:
-      - kind: sink
-        name: blackhole
+  - from: socket_main
+    to: [security_hub]
+  - from: security_hub
+    to: [blackhole]

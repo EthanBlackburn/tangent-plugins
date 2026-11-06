@@ -10,21 +10,12 @@ plugins:
 sources:
   socket_main:
     type: socket
-    path: "/tmp/sidecar.sock"
+    socket_path: "/tmp/sidecar.sock"
 sinks:
   blackhole:
     type: blackhole
 dag:
-  - from:
-      kind: source
-      name: socket_main
-    to:
-      - kind: plugin
-        name: okta_system_logs_api_activity
-
-  - from:
-      kind: plugin
-      name: okta_system_logs_api_activity
-    to:
-      - kind: sink
-        name: blackhole
+  - from: socket_main
+    to: [okta_system_logs_api_activity]
+  - from: okta_system_logs_api_activity
+    to: [blackhole]
