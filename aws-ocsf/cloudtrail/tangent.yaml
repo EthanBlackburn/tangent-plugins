@@ -15,16 +15,7 @@ sinks:
   blackhole:
     type: blackhole
 dag:
-  - from:
-      kind: source
-      name: socket_main
-    to:
-      - kind: plugin
-        name: cloudtrail
-
-  - from:
-      kind: plugin
-      name: cloudtrail
-    to:
-      - kind: sink
-        name: blackhole
+  - from: socket_main
+    to: [cloudtrail]
+  - from: cloudtrail
+    to: [blackhole]

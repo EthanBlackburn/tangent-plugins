@@ -15,16 +15,7 @@ sinks:
   blackhole:
     type: blackhole
 dag:
-  - from:
-      kind: source
-      name: socket_main
-    to:
-      - kind: plugin
-        name: conn
-
-  - from:
-      kind: plugin
-      name: conn
-    to:
-      - kind: sink
-        name: blackhole
+  - from: socket_main
+    to: [conn]
+  - from: conn
+    to: [blackhole]

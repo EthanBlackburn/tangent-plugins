@@ -15,16 +15,7 @@ sinks:
   blackhole:
     type: blackhole
 dag:
-  - from:
-      kind: source
-      name: socket_main
-    to:
-      - kind: plugin
-        name: qradar_offense
-
-  - from:
-      kind: plugin
-      name: qradar_offense
-    to:
-      - kind: sink
-        name: blackhole
+  - from: socket_main
+    to: [qradar_offense]
+  - from: qradar_offense
+    to: [blackhole]

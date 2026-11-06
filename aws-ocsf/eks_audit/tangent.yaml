@@ -15,16 +15,7 @@ sinks:
   blackhole:
     type: blackhole
 dag:
-  - from:
-      kind: source
-      name: socket_main
-    to:
-      - kind: plugin
-        name: eks_audit
-
-  - from:
-      kind: plugin
-      name: eks_audit
-    to:
-      - kind: sink
-        name: blackhole
+  - from: socket_main
+    to: [eks_audit]
+  - from: eks_audit
+    to: [blackhole]

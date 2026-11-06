@@ -15,16 +15,7 @@ sinks:
   blackhole:
     type: blackhole
 dag:
-  - from:
-      kind: source
-      name: network_input
-    to:
-      - kind: plugin
-        name: shaihulud
-
-  - from:
-      kind: plugin
-      name: shaihulud
-    to:
-      - kind: sink
-        name: blackhole
+  - from: network_input
+    to: [shaihulud]
+  - from: shaihulud
+    to: [blackhole]
