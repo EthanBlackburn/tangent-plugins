@@ -10,7 +10,7 @@ plugins:
 sources:
   socket_main:
     type: socket
-    path: "/tmp/sidecar.sock"
+    socket_path: "/tmp/sidecar.sock"
 sinks:
   blackhole:
     type: blackhole
