@@ -7,3 +7,6 @@ __pycache__/
 **/test_out.ndjson
 **/.test.yaml
 **/plugins/
+# the Go SDK's generator writes these during `tangent plugin compile`
+json_generated.go
+schema_generated.go
